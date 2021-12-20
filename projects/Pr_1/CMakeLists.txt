@@ -1,8 +1,13 @@
-add_subdirectory(shared_tcp_structs)
-list(APPEND SHARED_TCP_DEPENDENCIES shared_tcp_structs)
+project(Lab_1_scanner)
 
-add_subdirectory(cesar_single_client)
-add_subdirectory(cesar_single_server)
+file(GLOB SOURCE src/*.cpp src/*.cxx)
 
-add_subdirectory(simple_tcp_client)
-add_subdirectory(single_thread_server)
+add_executable(${PROJECT_NAME} ${SOURCE})
+
+list(APPEND HLP_DEPS iphlpapi)
+
+if (MINGW)
+ list(APPEND HLP_DEPS icmp)
+endif()
+
+target_link_libraries(${PROJECT_NAME} ${COMMON_LIBRARIES} ${HLP_DEPS})

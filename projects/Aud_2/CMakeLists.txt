@@ -1,0 +1,5 @@
+add_subdirectory(shared_tcp_structs)
+list(APPEND SHARED_TCP_DEPENDENCIES_PARALLEL shared_tcp_structs)
+
+add_subdirectory(cesar_multi_client)
+add_subdirectory(cesar_multi_server)
